@@ -1,0 +1,25 @@
+
+# Archivos privados
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencias
+**/node_modules/
+**/vendor/
+**/dist/
+
+# Bases de datos locales
+**/database/*.sqlite
+**/database/*.sqlite-*
+
+# Laravel temporales
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*.php
+
+# Sistema
+.DS_Store
+Thumbs.db

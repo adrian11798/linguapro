@@ -1,0 +1,270 @@
+@import './variables.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-primary-hover); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+.btn-outline:hover { background: rgba(13,35,58,0.04); }
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-sm { padding: 0.4rem 0.9rem; font-size: 0.85rem; }
+.btn-block { width: 100%; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  font-family: var(--font-body);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  background: #fff;
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--color-accent);
+}
+
+.error-text {
+  color: var(--color-danger);
+  font-size: 0.85rem;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e9ebee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+table.data-table th {
+  text-align: left;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.6rem 0.5rem;
+}
+table.data-table td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+/* =====================================================
+   Refinamientos de diseño
+   ===================================================== */
+:root {
+  --shadow-hover: 0 12px 30px rgba(13, 35, 58, 0.13), 0 2px 6px rgba(13, 35, 58, 0.06);
+  --ring: 0 0 0 3px rgba(59, 130, 246, 0.22);
+}
+
+body {
+  background:
+    radial-gradient(900px 420px at 92% -8%, rgba(59, 130, 246, 0.08), transparent 65%),
+    radial-gradient(700px 380px at -5% 105%, rgba(13, 35, 58, 0.05), transparent 60%),
+    var(--color-bg);
+  background-attachment: fixed;
+}
+
+h1 { letter-spacing: -0.01em; }
+
+.card {
+  border-color: #e2e6eb;
+  box-shadow: 0 1px 2px rgba(13, 35, 58, 0.05), 0 4px 14px rgba(13, 35, 58, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Entrada suave de cada pantalla.
+   Importante: fill-mode "backwards" (no "both"/"forwards"). Si la animación se
+   queda "activa" al terminar, el elemento mantiene un transform y los modales
+   (position: fixed) dejan de cubrir toda la pantalla. */
+.page, .admin-content > div, .teacher-content > div {
+  animation: fadeUp 0.32s ease backwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Botones */
+.btn-primary {
+  background: linear-gradient(180deg, #14304f, #0d233a);
+  box-shadow: 0 1px 2px rgba(13, 35, 58, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #1a3b60, #0f2a47);
+  box-shadow: 0 8px 18px rgba(13, 35, 58, 0.28);
+  transform: translateY(-1px);
+}
+.btn-outline { background: #fff; }
+.btn-outline:hover { border-color: #b8c0cc; box-shadow: 0 2px 8px rgba(13, 35, 58, 0.08); }
+.btn:focus-visible { outline: none; box-shadow: var(--ring); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Campos de formulario */
+.form-field input,
+.form-field select,
+.form-field textarea { transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--color-accent); box-shadow: var(--ring); }
+
+/* Tablas */
+table.data-table th {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  padding-bottom: 0.8rem;
+}
+table.data-table tbody tr { transition: background 0.15s ease; }
+table.data-table tbody tr:hover td { background: #f8fafc; }
+table.data-table tbody tr:last-child td { border-bottom: none; }
+
+/* Insignias de estado */
+.badge-success { background: rgba(22, 163, 74, 0.12); color: #15803d; }
+.badge-warning { background: rgba(217, 119, 6, 0.14); color: #b45309; }
+.badge-muted { background: #eef0f3; color: var(--color-text-muted); }
+
+/* Barras de progreso con un poco más de cuerpo */
+.progress-track { height: 9px; background: #e6e9ee; }
+.progress-fill { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
+
+/* Ventanas modales */
+.modal-backdrop { backdrop-filter: blur(3px); animation: fadeIn 0.18s ease backwards; }
+.modal { animation: pop 0.22s ease backwards; border: none; box-shadow: 0 24px 60px rgba(13, 35, 58, 0.3); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Avatar con iniciales (usado en barras y paneles) */
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #0d233a);
+  color: #fff; font-size: 0.78rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; letter-spacing: 0.02em;
+}
+
+/* Barra de desplazamiento discreta */
+* { scrollbar-width: thin; scrollbar-color: #c3cad4 transparent; }
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
